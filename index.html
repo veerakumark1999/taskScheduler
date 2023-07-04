@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queue-based Task Scheduler</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="task-scheduler">
+      <h1>Task Scheduler</h1>
+      <div id="task-form">
+
+        <input type="text" name="taskName" id="taskName" placeholder="Task Name">
+        <input type="number" name="taskPriority" id="taskPriority" placeholder="Task Priority">
+        <button onclick="addTask()">Add Task</button>
+        <!--- <input onclick="addTask()" id="new-task-submit" value="Add task" />--->
+
+        <!-- <input onclick="addTask()" id="taskSubmit" value="Add Task" />-->
+
+      </div>
+      <br>
+
+      <div class="actions" id="action">
+
+        <button onclick="removeTask()" class="delete">Remove Task</button><br>
+
+
+        <button onclick="executeTask()" class="execute">Execute Task</button>
+
+      </div><br><br>
+
+  </header>
+
+
+  <main>
+    <br><br><br>
+    <section class="task-list">
+      <div id="tasks">
+        <div class="task">
+
+
+          <div id="taskQueue" class="task-queue">
+
+            <h3>Task Queue:</h3>
+            <div class="content">
+              <input type="text" class="text" value="A new Task" readonly>
+            </div>
+          </div>
+        </div>
+    </section>
+  </main>
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
