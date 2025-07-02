@@ -14,7 +14,6 @@ class TaskScheduler {
     this.queue.push(task);
 
     this.updateTaskQueue();
-  
   }
 
   removeTask() {
@@ -61,18 +60,21 @@ class TaskScheduler {
     console.log(`Executing task : ${executedTask.name}`);
     this.updateTaskQueue();
   }
-
   updateTaskQueue() {
-    const taskQueueElement = document.getElementById('taskQueue');
-    taskQueueElement.innerHTML = '<h3>Task Queue:</h3>';
+    const taskQueueElement = document.getElementById("taskQueue");
+    taskQueueElement.innerHTML = "<h3>Task Queue:</h3>";
+
     if (this.queue.length === 0) {
-      const emptyMessage = document.createElement('p');
-      emptyMessage.textContent = 'Task queue is empty.';
+      const emptyMessage = document.createElement("p");
+      emptyMessage.textContent = "Task queue is empty.";
       taskQueueElement.appendChild(emptyMessage);
     } else {
-      for (const task of this.queue) {
-        const taskItem = document.createElement('p');
-        //this.priority.sort((a,b)=>a-b);
+      const sortedQueue = [...this.queue].sort(
+        (a, b) => b.priority - a.priority
+      );
+
+      for (const task of sortedQueue) {
+        const taskItem = document.createElement("p");
         taskItem.textContent = `Task: ${task.name} (Priority: ${task.priority})`;
         taskQueueElement.appendChild(taskItem);
       }
@@ -83,8 +85,8 @@ class TaskScheduler {
 const scheduler = new TaskScheduler();
 
 function addTask() {
-  const taskName = document.getElementById('taskName').value;
-  const taskPriority = parseInt(document.getElementById('taskPriority').value);
+  const taskName = document.getElementById("taskName").value;
+  const taskPriority = parseInt(document.getElementById("taskPriority").value);
 
   if (!taskName || !taskPriority) {
     console.log("Please enter a valid task name and priority.");
@@ -95,8 +97,8 @@ function addTask() {
   scheduler.addTask(task);
 
   // Clear input fields
-  document.getElementById('taskName').value = '';
-  document.getElementById('taskPriority').value = '';
+  document.getElementById("taskName").value = "";
+  document.getElementById("taskPriority").value = "";
 }
 
 function removeTask() {
